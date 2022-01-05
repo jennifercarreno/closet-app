@@ -18,7 +18,7 @@ def index():
 #prompts to create a new item 
 @app.route('/item/new')
 def item_new():
-    return render_template('item_new.html', items=items.find())
+    return render_template('item_new.html')
 
 # displays items
 @app.route('/items', methods=['POST'])
@@ -30,7 +30,7 @@ def items_submit():
     }
     items.insert_one(item)
     print(db.items)
-    return render_template('items.html')
+    return render_template('items.html', items=items.find())
 
 if __name__ == '__main__':
    app.run()

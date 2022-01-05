@@ -18,10 +18,10 @@ def index():
 #prompts to create a new item 
 @app.route('/item/new')
 def item_new():
-    return render_template('item_new.html')
+    return render_template('item_new.html', items=items.find())
 
 # displays items
-@app.route('/items')
+@app.route('/items', methods=['POST'])
 def items_submit():
     item = {
         'name': request.form.get('name'),
@@ -29,6 +29,7 @@ def items_submit():
         'item-photo-link': request.form.get('item-photo-link')
     }
     items.insert_one(item)
+    print(db.items)
     return render_template('items.html')
 
 if __name__ == '__main__':

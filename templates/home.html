@@ -2,5 +2,44 @@
 {% extends 'base.html' %}
 
 {% block content %}
-closet home page goes here
+<div class="nav">
+    <a class = "nav-item nav-link active"> Closet </a>
+    <a class = "nav-item nav-link"> Outfits </a>
+    <a class = "nav-item nav-link"> Collections </a>
+    <a class = "nav-item nav-link"> Items </a>
+</div>
+
+<div class="jumbotron text-center hero-background-img" id="home-hero">
+    <div id="home-hero-container" class="col-lg-2 py-3 mx-auto my-5">
+        <a href="#" class="btn">Start Creating</a>
+    </div>
+</div>
+
+<div class="container pb-5 pt-5 mb-5 mt-5">
+    <div class="row">
+        <div class="card col-lg-4">
+            <!-- <img class="card-img-top" src="https://cdn.shopify.com/s/files/1/0577/7149/1504/products/pleasing_06.jpg?v=1636654730" alt="Card image cap"> -->
+            <div class="card-body">
+              <h5 class="card-title">Upload an Item</h5>
+              <a href="/item/new" class="btn">View</a>
+            </div>
+        </div>
+
+        <div class="card col-lg-4">
+            <!-- <img class="card-img-top" src="https://cdn.shopify.com/s/files/1/0577/7149/1504/products/pleasing_50.jpg?v=1636658650" alt="Card image cap"> -->
+            <div class="card-body">
+              <h5 class="card-title">Create a Collection</h5>
+              <a href="#" class="btn">View</a>
+            </div>
+        </div>
+
+        <div class="card col-lg-4">
+            <!-- <img class="card-img-top" src="https://cdn.shopify.com/s/files/1/0577/7149/1504/products/pleasing_39.jpg?v=1636657669" alt="Card image cap" > -->
+            <div class="card-body">
+              <h5 class="card-title">Create an Outfit</h5>
+              <a href="#" class="btn">View</a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -1,9 +1,9 @@
 from flask import Flask, render_template, redirect, url_for, request
 from bson.objectid import ObjectId
 from pymongo import MongoClient
-from werkzeug.utils import secure_filename
+# from werkzeug.utils import secure_filename
 import os
-import item_functions
+# import item_functions
 
 host = os.environ.get('DB_URL')
 client = MongoClient(host=host)
@@ -23,13 +23,14 @@ def item_new():
     return render_template('item_new.html')
 
 # displays items
-@app.route('/items', methods=['POST'])
+@app.route('/items', methods=['POST', 'GET'])
 def items_submit():
     item = {
         'name': request.form.get('name'),
         'item-photo': request.form.get('item-photo'),
         'link': request.form.get('photo-link')
     }
+    
     items.insert_one(item)
     # print(db.items)
     print(item['name'])
@@ -37,12 +38,24 @@ def items_submit():
     # item_photo_func = item_functions.get_item_photo(items)
     return render_template('items.html', items=items.find())
 
-@app.route('/uploader', methods = ['GET', 'POST'])
-def upload_file():
-   if request.method == 'POST':
-      f = request.files['file']
-      f.save(secure_filename(f.filename))
-      return 'file uploaded successfully'
+# displays a single item
+@app.route('/items/<item_id>')
+def item_show(item_id):
+    item = items.find_one({'_id': ObjectId(item_id)})
+    return render_template('items_show.html', item = item)
+
+# deletes an item
+@app.route('/items/<item_id>/delete', methods=['POST'])
+def items_delete(item_id):
+    items.delete_one({'_id': ObjectId(item_id)})
+    return redirect(url_for('items_submit'))
+
+# @app.route('/uploader', methods = ['GET', 'POST'])
+# def upload_file():
+#    if request.method == 'POST':
+#       f = request.files['file']
+#       f.save(secure_filename(f.filename))
+#       return 'file uploaded successfully'
 
 if __name__ == '__main__':
    app.run()

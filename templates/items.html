@@ -7,7 +7,7 @@
 
     {% for item in items %}
 
-        <h2>{{ item.name }}</h2>
+        <h2><a href='/items/{{ item._id }}'>{{ item.name }}</a></h2>
         <img src= {{ item.link }}>
 
     {% endfor %}

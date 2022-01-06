@@ -1,0 +1,13 @@
+<!-- templates/items_show.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>{{ item.name }}</h1>
+<img src={{item.link}}>
+
+<p><form method='POST' action= "/items/{{item._id}}/delete">
+    <button class='btn btn-primary' type='submit'>Delete</button>
+</form></p>
+
+{% endblock %}

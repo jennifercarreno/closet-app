@@ -31,6 +31,7 @@ def items():
 # displays items when created
 @app.route('/items/submit', methods=['POST', 'GET'])
 def items_submit():
+    items = db.items
     item = {
         'name': request.form.get('name'),
         'item-photo': request.form.get('item-photo'),

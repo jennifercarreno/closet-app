@@ -22,8 +22,14 @@ def index():
 def item_new():
     return render_template('item_new.html')
 
-# displays items
-@app.route('/items', methods=['POST', 'GET'])
+@app.route('/items')
+def items():
+    items = db.items
+    print(items)
+    return render_template('items.html', items = items.find())
+
+# displays items when created
+@app.route('/items/submit', methods=['POST', 'GET'])
 def items_submit():
     item = {
         'name': request.form.get('name'),
@@ -41,14 +47,16 @@ def items_submit():
 # displays a single item
 @app.route('/items/<item_id>')
 def item_show(item_id):
+    items=db.items
     item = items.find_one({'_id': ObjectId(item_id)})
     return render_template('items_show.html', item = item)
 
 # deletes an item
 @app.route('/items/<item_id>/delete', methods=['POST'])
 def items_delete(item_id):
+    items=db.items
     items.delete_one({'_id': ObjectId(item_id)})
-    return redirect(url_for('items_submit'))
+    return redirect(url_for('.items'))
 
 # @app.route('/uploader', methods = ['GET', 'POST'])
 # def upload_file():

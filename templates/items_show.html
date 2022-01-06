@@ -5,6 +5,8 @@
 
 <h1>{{ item.name }}</h1>
 <img src={{item.link}}>
+<h3>Item Category</h3>
+<p>{{ item.category }}<p>
 
 <p><form method='POST' action= "/items/{{item._id}}/delete">
     <button class='btn btn-primary' type='submit'>Delete</button>

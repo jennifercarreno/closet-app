@@ -36,7 +36,8 @@ def items_submit():
         'name': request.form.get('name'),
         # 'item-photo': request.form.get('item-photo'),
         'link': request.form.get('photo-link'), 
-        'category': request.form.get('category')
+        'category': request.form.get('category'),
+        'color':request.form.get('color')
     }
     
     items.insert_one(item)
@@ -44,6 +45,7 @@ def items_submit():
     print(item['name'])
     print(item['link'])
     print(item['category'])
+    print(item['color'])
     # item_photo_func = item_functions.get_item_photo(items)
     return render_template('items.html', items=items.find())
 

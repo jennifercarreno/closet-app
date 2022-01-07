@@ -3,7 +3,7 @@ from bson.objectid import ObjectId
 from pymongo import MongoClient
 # from werkzeug.utils import secure_filename
 import os
-# import item_functions
+from item_functions import filter
 
 host = os.environ.get('DB_URL')
 client = MongoClient(host=host)
@@ -81,15 +81,19 @@ def items_update(item_id):
         'category': request.form.get('category'),
         'color':request.form.get('color')
     }
-    # set the former playlist to the new one we just updated/edited
     items.update_one(
         {'_id': ObjectId(item_id)},
         {'$set': updated_item})
 
     item=items.find_one({'_id': ObjectId(item_id)})
     print(item['name'])
-    # take us back to the playlist's show page
     return redirect(url_for('item_show', item_id=item_id))
+
+@app.route('/items/filter', methods=['POST'])
+def items_filter():
+    items = db.items
+    filtered_items = filter(items)
+    return render_template('items.html', items=filtered_items)
 
 
 

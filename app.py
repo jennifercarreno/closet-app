@@ -63,6 +63,36 @@ def items_delete(item_id):
     items.delete_one({'_id': ObjectId(item_id)})
     return redirect(url_for('.items'))
 
+#edit an item
+@app.route('/items/<item_id>/edit', methods=['POST'])
+def items_edit(item_id):
+    items=db.items
+    item = items.find_one({'_id': ObjectId(item_id)})
+    return render_template('items_edit.html', item=item)
+
+#updates an item
+@app.route('/items/<item_id>/update', methods=['POST'])
+def items_update(item_id):
+    items=db.items
+    updated_item = {
+       'name': request.form.get('name'),
+        # 'item-photo': request.form.get('item-photo'),
+        'link': request.form.get('photo-link'), 
+        'category': request.form.get('category'),
+        'color':request.form.get('color')
+    }
+    # set the former playlist to the new one we just updated/edited
+    items.update_one(
+        {'_id': ObjectId(item_id)},
+        {'$set': updated_item})
+
+    item=items.find_one({'_id': ObjectId(item_id)})
+    print(item['name'])
+    # take us back to the playlist's show page
+    return redirect(url_for('item_show', item_id=item_id))
+
+
+
 # @app.route('/uploader', methods = ['GET', 'POST'])
 # def upload_file():
 #    if request.method == 'POST':

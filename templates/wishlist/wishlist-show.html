@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>{{ wishlistItem.name }}</h1>
+<img src={{wishlistItem.link}}>
+<h3>Item Category</h3>
+<p>{{ wishlistItem.category }}<p>
+<h3>Item Color</h3>
+<p>{{ wishlistItem.color }}<p>
+
+<p><form method='POST' action= "/wishlist/{{wishlistItem._id}}/delete">
+    <button class='btn btn-primary' type='submit'>Delete</button>
+</form></p>
+
+<p><form method='POST' action= "/wishlist/{{wishlistItem._id}}/edit">
+    <button class='btn btn-primary' type='submit'>Edit</button>
+</form></p>
+{% endblock %}

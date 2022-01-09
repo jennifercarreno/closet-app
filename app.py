@@ -116,6 +116,18 @@ def wishlist_submit():
     wishlistItems.insert_one(wishlistItem)
     return render_template('wishlist/wishlist-home.html', items=wishlistItems.find())
 
+# shows a single item in wishlist
+@app.route('/wishlist/<item_id>')
+def wishlist_show(item_id):
+    wishlistItem = wishlistItems.find_one({'_id': ObjectId(item_id)})
+    return render_template('wishlist/wishlist-show.html', wishlistItem=wishlistItem)
+
+# deletes an item
+@app.route('/items/<item_id>/delete', methods=['POST'])
+def items_delete(item_id):
+    items=db.items
+    items.delete_one({'_id': ObjectId(item_id)})
+    return redirect(url_for('.items'))
 
 if __name__ == '__main__':
    app.run()

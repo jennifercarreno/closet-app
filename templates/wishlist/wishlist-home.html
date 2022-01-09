@@ -6,7 +6,7 @@
     <button class="btn"><a href='/wishlist/new'>Upoad an Item to Wishlist</a></button>
 
     {% for item in items %}
-        <h2>{{item.name}} </h2>
+        <h2><a href='/wishlist/{{ item._id }}'>{{item.name}}</a></h2>
         <img src={{item.link}}>
     {% endfor %}
 {% endblock %}

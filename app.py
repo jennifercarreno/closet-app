@@ -123,11 +123,10 @@ def wishlist_show(item_id):
     return render_template('wishlist/wishlist-show.html', wishlistItem=wishlistItem)
 
 # deletes an item
-@app.route('/items/<item_id>/delete', methods=['POST'])
-def items_delete(item_id):
-    items=db.items
-    items.delete_one({'_id': ObjectId(item_id)})
-    return redirect(url_for('.items'))
+@app.route('/wishlist/<wishlistItem_id>/delete', methods=['POST'])
+def wishlist_delete(wishlistItem_id):
+    wishlistItems.delete_one({'_id': ObjectId(wishlistItem_id)})
+    return redirect(url_for('.wishlist_home'))
 
 if __name__ == '__main__':
    app.run()

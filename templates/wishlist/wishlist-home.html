@@ -1,0 +1,12 @@
+<!-- templates/wishlist/wishlist-home.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Wishlist </h1>
+    <button class="btn"><a href='/wishlist/new'>Upoad an Item to Wishlist</a></button>
+
+    {% for item in items %}
+        <h2>{{item.name}} </h2>
+        <img src={{item.link}}>
+    {% endfor %}
+{% endblock %}

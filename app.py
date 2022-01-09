@@ -122,11 +122,33 @@ def wishlist_show(item_id):
     wishlistItem = wishlistItems.find_one({'_id': ObjectId(item_id)})
     return render_template('wishlist/wishlist-show.html', wishlistItem=wishlistItem)
 
-# deletes an item
+# deletes an item in wishlist
 @app.route('/wishlist/<wishlistItem_id>/delete', methods=['POST'])
 def wishlist_delete(wishlistItem_id):
     wishlistItems.delete_one({'_id': ObjectId(wishlistItem_id)})
     return redirect(url_for('.wishlist_home'))
+
+# edit an item in wishlist
+@app.route('/wishlist/<wishlistItem_id>/edit', methods=['POST'])
+def wishlist_edit(wishlistItem_id):
+    wishlistItem=wishlistItems.find_one({'_id': ObjectId(wishlistItem_id)})
+    return render_template('wishlist/wishlist-edit.html',wishlistItem=wishlistItem)
+
+#updates an item in wishlist
+@app.route('/wishlist/<wishlistItem_id>/update', methods=['POST'])
+def wishlist_update(wishlistItem_id):
+    updated_item = {
+       'name': request.form.get('name'),
+        'link': request.form.get('photo-link'), 
+        'category': request.form.get('category'),
+        'color':request.form.get('color')
+    }
+    wishlistItems.update_one(
+        {'_id': ObjectId(wishlistItem_id)},
+        {'$set': updated_item})
+
+    wishlistItem=wishlistItems.find_one({'_id': ObjectId(wishlistItem_id)})
+    return redirect(url_for('.wishlist_show', item_id=wishlistItem_id))
 
 if __name__ == '__main__':
    app.run()

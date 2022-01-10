@@ -5,6 +5,43 @@
     <h1>Wishlist </h1>
     <button class="btn"><a href='/wishlist/new'>Upoad an Item to Wishlist</a></button>
 
+    <h4>Sort Items</h4>
+    <div class="container row my-3">
+    <form method="POST" action="/wishlist/filter">
+    <label for="color" class="mx-2">Select Item Color</label>
+        <select class="" id="color" name="color" type="select">
+          <option>--</option>
+          <option>Black</option>
+          <option>Brown</option>
+          <option>Blue</option>
+          <option>Denim</option>
+          <option>Green</option>
+          <option>Grey</option>
+          <option>Orange</option>
+          <option>Pink</option>
+          <option>Purple</option>
+          <option>Red</option>
+          <option>White</option>
+          <option>Yellow</option>
+          <option>Other</option>
+        </select>
+      
+        <label for="category" class="mx-2">Select Item Category</label>
+            <select class="" id="category" name="category" type="select">
+              <option>--</option>
+              <option>Tops</option>
+              <option>Bottoms</option>
+              <option>Dresses</option>
+              <option>Sweaters and Jackets</option>
+              <option>Activewear</option>
+              <option>Accessories</option>
+              <option>Shoes</option>
+            </select>
+
+            <button type='submit' class="mt-3">Filter</button>
+        </form>
+    </div>
+
     {% for item in items %}
         <h2><a href='/wishlist/{{ item._id }}'>{{item.name}}</a></h2>
         <img src={{item.link}}>

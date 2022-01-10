@@ -150,5 +150,12 @@ def wishlist_update(wishlistItem_id):
     wishlistItem=wishlistItems.find_one({'_id': ObjectId(wishlistItem_id)})
     return redirect(url_for('.wishlist_show', item_id=wishlistItem_id))
 
+# filters for wishlist
+@app.route('/wishlist/filter', methods=['POST'])
+def wishlist_filter():
+    # wishlistItems = db.wishlistitems
+    filtered_items = filter(wishlistItems)
+    return render_template('wishlist/wishlist-home.html', items=filtered_items)
+
 if __name__ == '__main__':
    app.run()

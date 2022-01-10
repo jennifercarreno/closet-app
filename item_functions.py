@@ -10,11 +10,12 @@ def filter(items):
     filter_category = request.form.get('category')
 
     # check to see if a filter has been selected
-    if filter_color != '--' and filter_category != '--':
+    if filter_color != '--' or filter_category != '--':
         # if only color filter is selected
         if filter_color != '--' and filter_category == '--':
             for item in items.find():
                 item_color = item.get('color')
+                print(item_color)
                 if item_color == filter_color:
                     filtered_items.append(item)
         # if only category filter is selected
@@ -30,6 +31,7 @@ def filter(items):
                 item_color = item.get('color')
                 if item_category == filter_category and item_color == filter_color:
                     filtered_items.append(item)
-
+                    
+    print(filtered_items)
     return filtered_items
 

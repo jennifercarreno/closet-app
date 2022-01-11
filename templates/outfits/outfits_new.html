@@ -9,24 +9,25 @@
 <div class="col">
 <form method="POST" action="/outfits/submit">
     <!-- name -->
-    <label for='outfit-name'>New Outfit Name: </label>
-    <input id='outfit-name' type='text' name='name' value='' placeholder="name"/>
+    <div class="col">
+        <label for='outfit-name'>New Outfit Name: </label>
+        <input id='outfit-name' type='text' name='name' value='' placeholder="name"/>
+    </div>
 
     <!-- items -->
     <label for='outfit-item'>Select Items</label>
 
     <!-- item 1 -->
     <div class='col'>
-    <select name='outfit-item1' id='outfit-item1'>
-        <option>--</option>
-    {% for item in items%}
-        <option>{{item.name}}</option>
-    {% endfor %}
-    </select>
+        <select name='outfit-item1' id='outfit-item1'>
+            <option>--</option>
+        {% for item in items%}
+            <option>{{item.name}}</option>
+        {% endfor %}
+        </select>
     </div>
 
     <!-- item 2 -->
-    <label for='outfit-item2'>Select another item</label>
     <div class='col'>
         <select name='outfit-item2' id='outfit-item2'>
             <option>--</option>
@@ -34,18 +35,21 @@
             <option>{{item.name}}</option>
         {% endfor %}
         </select>
-        </div>
+    </div>
     
     <!-- item 3 -->
-    <select name='outfit-item3' id='outfit-item3' >
-        <option>--</option>
+    <div class="col">
+        <select name='outfit-item3' id='outfit-item3' >
+            <option>--</option>
 
-        {% for item in items%}
-            <option>{{item.name}}</option>
-        {% endfor %}
-    </select>
+            {% for item in items%}
+                <option>{{item.name}}</option>
+            {% endfor %}
+        </select>
+    </div>
 
     <!-- item 4 -->
+    <div class="col">
     <select name='outfit-item4' id='outfit-item4'>
         <option>--</option>
 
@@ -53,8 +57,10 @@
             <option>{{item.name}}</option>
         {% endfor %}
     </select>
+    </div>
 
     <!-- item 5 -->
+    <div class="col">
     <select name='outfit-item5' id='outfit-item5'>
         <option>--</option>
 
@@ -63,6 +69,7 @@
         {% endfor %}
     </select>
 </div>
+
     <!-- tags -->
     <label for='outfit-occasion'>Outfit Occasion</label>
     <select name='occasion' id='outfit-occasion'>
@@ -75,5 +82,5 @@
 
     <button type='submit' class="mt-3">Save Outfit</button>
 </form>
-
+</div>
 {% endblock %}

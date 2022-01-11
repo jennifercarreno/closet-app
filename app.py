@@ -16,6 +16,8 @@ app = Flask(__name__)
 def index():
    return render_template('home.html')
 
+# start of ITEMS
+
 #prompts to create a new item 
 @app.route('/item/new')
 def item_new():
@@ -94,6 +96,8 @@ def items_filter():
     filtered_items = filter(items)
     return render_template('items/items.html', items=filtered_items)
 
+# start of WISHLIST
+
 # wishlist page
 @app.route('/wishlist')
 def wishlist_home():
@@ -156,6 +160,11 @@ def wishlist_filter():
     # wishlistItems = db.wishlistitems
     filtered_items = filter(wishlistItems)
     return render_template('wishlist/wishlist-home.html', items=filtered_items)
+
+# start of OUTFITS
+@app.route('/outfits')
+def outfits_home():
+    return render_template('outfits/outfits_home.html')
 
 if __name__ == '__main__':
    app.run()

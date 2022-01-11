@@ -1,0 +1,23 @@
+<!-- templates/outfits/outfits_new.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Create a new Outfit</h1>
+
+<form method="POST" action="/outfits/submit">
+    <!-- name -->
+    <label for='outfit-name'>New Outfit Name: </label>
+    <input id='outfit-name' type='text' name='name' value='' placeholder="name"/>
+
+    <!-- items -->
+    <label for='outfit-item'>Select Items</label>
+    <select name='outfit-item' id='outfit-item' multiple>
+    {% for item in items%}
+        <option>{{item.name}}</option>
+    {% endfor %}
+    </select>
+    <!-- tags -->
+    <button type='submit' class="mt-3">Save Outfit</button>
+</form>
+
+{% endblock %}

@@ -166,5 +166,11 @@ def wishlist_filter():
 def outfits_home():
     return render_template('outfits/outfits_home.html')
 
+# creates a new outfit
+@app.route('/outfits/new')
+def outfits_new():
+    items=db.items
+    return render_template('outfits/outfits_new.html', items=items.find())
+
 if __name__ == '__main__':
    app.run()

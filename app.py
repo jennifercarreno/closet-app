@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, url_for, request
 from bson.objectid import ObjectId
 from pymongo import MongoClient
 import os
-from item_functions import filter
+from item_functions import filter, link_converter
 
 host = os.environ.get('DB_URL')
 client = MongoClient(host=host)
@@ -190,6 +190,14 @@ def outfits_submit():
     outfits.insert_one(outfit)
     print(outfits)
     return render_template('outfits/outfits_home.html', outfits=outfits.find())
+
+# displays a single outfit
+@app.route('/outfits/<outfit_id>')
+def outfit_show(outfit_id):
+    outfit = outfits.find_one({'_id': ObjectId(outfit_id)})
+    items = db.items
+    link_converter(outfit, items)
+    return render_template('outfits/outfits_show.html', outfit = outfit)
 
 if __name__ == '__main__':
    app.run()

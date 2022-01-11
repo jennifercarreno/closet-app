@@ -35,3 +35,23 @@ def filter(items):
     print(filtered_items)
     return filtered_items
 
+
+
+def link_converter(outfit, items):
+    for item in items.find():
+        if item['name'] == outfit['item1']:
+            outfit['item1'] = item['link']
+
+        if item['name'] == outfit['item2']:
+            outfit['item2'] = item['link']
+
+        if item['name'] == outfit['item3']:
+            outfit['item3'] = item['link']
+
+        if item['name'] == outfit['item4']:
+            outfit['item4'] = item['link']
+
+        if item['name'] == outfit['item5']:
+            outfit['item5'] = item['link']
+    return
+

@@ -199,5 +199,12 @@ def outfit_show(outfit_id):
     link_converter(outfit, items)
     return render_template('outfits/outfits_show.html', outfit = outfit)
 
+# deletes an outfit
+@app.route('/outfits/<outfit_id>/delete', methods=['POST'])
+def outfits_delete(outfit_id):
+    outfits.delete_one({'_id': ObjectId(outfit_id)})
+    return redirect(url_for('.outfits_home'))
+
+
 if __name__ == '__main__':
    app.run()

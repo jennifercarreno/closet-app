@@ -2,8 +2,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+
 <h1>Create a new Outfit</h1>
 
+<div class="col">
 <form method="POST" action="/outfits/submit">
     <!-- name -->
     <label for='outfit-name'>New Outfit Name: </label>
@@ -11,12 +14,65 @@
 
     <!-- items -->
     <label for='outfit-item'>Select Items</label>
-    <select name='outfit-item' id='outfit-item' multiple>
+
+    <!-- item 1 -->
+    <div class='col'>
+    <select name='outfit-item1' id='outfit-item1'>
+        <option>--</option>
     {% for item in items%}
         <option>{{item.name}}</option>
     {% endfor %}
     </select>
+    </div>
+
+    <!-- item 2 -->
+    <label for='outfit-item2'>Select another item</label>
+    <div class='col'>
+        <select name='outfit-item2' id='outfit-item2'>
+            <option>--</option>
+        {% for item in items%}
+            <option>{{item.name}}</option>
+        {% endfor %}
+        </select>
+        </div>
+    
+    <!-- item 3 -->
+    <select name='outfit-item3' id='outfit-item3' >
+        <option>--</option>
+
+        {% for item in items%}
+            <option>{{item.name}}</option>
+        {% endfor %}
+    </select>
+
+    <!-- item 4 -->
+    <select name='outfit-item4' id='outfit-item4'>
+        <option>--</option>
+
+        {% for item in items%}
+            <option>{{item.name}}</option>
+        {% endfor %}
+    </select>
+
+    <!-- item 5 -->
+    <select name='outfit-item5' id='outfit-item5'>
+        <option>--</option>
+
+       {% for item in items%}
+            <option>{{item.name}}</option>
+        {% endfor %}
+    </select>
+</div>
     <!-- tags -->
+    <label for='outfit-occasion'>Outfit Occasion</label>
+    <select name='occasion' id='outfit-occasion'>
+        <option>Casual</option>
+        <option>Activewear</option>
+        <option>Going Out</option>
+        <option>Semi Formal</option>
+        <option>Formal</option>
+    </select>
+
     <button type='submit' class="mt-3">Save Outfit</button>
 </form>
 

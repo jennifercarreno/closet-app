@@ -9,6 +9,7 @@ client = MongoClient(host=host)
 db = client.closet
 items = db.items
 wishlistItems = db.wishlistItems
+outfits = db.outfits
 app = Flask(__name__)
 
 # home page
@@ -164,13 +165,31 @@ def wishlist_filter():
 # start of OUTFITS
 @app.route('/outfits')
 def outfits_home():
-    return render_template('outfits/outfits_home.html')
+    return render_template('outfits/outfits_home.html', outfits=outfits.find())
 
 # creates a new outfit
 @app.route('/outfits/new')
 def outfits_new():
     items=db.items
-    return render_template('outfits/outfits_new.html', items=items.find())
+    list_items = list(items.find())
+    return render_template('outfits/outfits_new.html', items=list_items)
+
+# submits new outfit
+@app.route('/outfits/submit', methods=['POST'])
+def outfits_submit():
+    outfit = {
+        'name':request.form.get('name'),
+        'item1':request.form.get('outfit-item1'),
+        'item2':request.form.get('outfit-item2'),
+        'item3':request.form.get('outfit-item3'),
+        'item4':request.form.get('outfit-item4'),
+        'item5':request.form.get('outfit-item5'),
+        'occasion':request.form.get('occasion')
+    }
+
+    outfits.insert_one(outfit)
+    print(outfits)
+    return render_template('outfits/outfits_home.html', outfits=outfits.find())
 
 if __name__ == '__main__':
    app.run()

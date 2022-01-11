@@ -5,4 +5,10 @@
 <h1>Outfits</h1>
 
 <button class='btn'><a href='/outfits/new'>Create an Outfit</a></button>
+
+{% for outfit in outfits %}
+
+    <h1>{{ outfit.name }}</h1>
+
+{% endfor %}
 {% endblock %}

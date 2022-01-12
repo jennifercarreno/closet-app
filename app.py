@@ -196,8 +196,8 @@ def outfits_submit():
 def outfit_show(outfit_id):
     outfit = outfits.find_one({'_id': ObjectId(outfit_id)})
     items = db.items
-    link_converter(outfit, items)
-    return render_template('outfits/outfits_show.html', outfit = outfit)
+    outfit_items = link_converter(outfit, items)
+    return render_template('outfits/outfits_show.html', outfit = outfit, outfit_items=outfit_items)
 
 # deletes an outfit
 @app.route('/outfits/<outfit_id>/delete', methods=['POST'])

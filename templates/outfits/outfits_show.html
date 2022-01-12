@@ -2,11 +2,11 @@
 
 {% block content %}
 <h1>{{outfit.name}}</h1>
-<img src={{outfit.item1}}>
-<img src={{outfit.item2}}>
-<img src={{outfit.item3}}>
-<img src={{outfit.item4}}>
-<img src={{outfit.item5}}>
+
+{% for item in outfit_items %}
+<img src={{item}}>
+{% endfor %}
+
 
 
 <p><form method='POST' action= "/outfits/{{outfit._id}}/delete">

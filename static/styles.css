@@ -1,0 +1,19 @@
+.navbar {
+    background-color:rgb(112, 95, 90);
+}
+.nav-link {
+    color:rgb(254, 253, 242)
+}
+.nav-link:hover {
+    color:rgb(200, 223, 189);
+}
+body {
+    background-color:rgb(254, 253, 242)
+}
+
+.card {
+    border-width: 2px;
+    border-color: rgb(254, 253, 242);
+    background-color: rgb(112, 95, 90);
+    color: rgb(254, 253, 242);
+}

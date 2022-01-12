@@ -6,14 +6,19 @@
   <title>Closet</title>
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <!-- <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='/styles.css') }}"> -->
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='/styles.css') }}">
 </head>
 <body>
-  <div class="nav">
-    <a class = "nav-item nav-link active" href="/"> Closet </a>
-    <a class = "nav-item nav-link" href="/outfits"> Outfits </a>
-    <a class = "nav-item nav-link" href="/wishlist"> Wishlist </a>
-    <a class = "nav-item nav-link" href="/items"> Items </a>
+  
+  <div class="navbar ">
+    <a class="navbar-brand" href="/"  style="width: 200px">
+      <img src="/static/fitspobrown.jpg" style="width: 200px">
+    </a>
+    <div class="row my-auto">
+    <a class = "nav-item nav-link" href="/outfits"> outfits </a>
+    <a class = "nav-item nav-link" href="/wishlist"> wishlist </a>
+    <a class = "nav-item nav-link" href="/items"> items </a>
+  </div>
 </div>
     {% block content %}
         BODY CONTENT GOES HERE

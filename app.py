@@ -205,6 +205,33 @@ def outfits_delete(outfit_id):
     outfits.delete_one({'_id': ObjectId(outfit_id)})
     return redirect(url_for('.outfits_home'))
 
+# edits an outfit
+@app.route('/outfits/<outfit_id>/edit', methods=['POST'])
+def outfit_edit(outfit_id):
+    outfit=outfits.find_one({'_id': ObjectId(outfit_id)})
+    items=db.items
+    list_items = list(items.find())
+    return render_template('outfits/outfits_edit.html',outfit=outfit, items=list_items)
+
+@app.route('/outfits/<outfit_id>/update', methods=['POST'])
+def outfit_update(outfit_id):
+    updated_outfit = {
+        'name':request.form.get('name'),
+        'item1':request.form.get('outfit-item1'),
+        'item2':request.form.get('outfit-item2'),
+        'item3':request.form.get('outfit-item3'),
+        'item4':request.form.get('outfit-item4'),
+        'item5':request.form.get('outfit-item5'),
+        'occasion':request.form.get('occasion')
+    }
+    outfits.update_one(
+        {'_id': ObjectId(outfit_id)},
+        {'$set': updated_outfit})
+
+    outfit=outfits.find_one({'_id': ObjectId(outfit_id)})
+    items = db.items
+    link_converter(outfit, items)
+    return render_template('outfits/outfits_show.html', outfit = outfit)
 
 if __name__ == '__main__':
    app.run()

@@ -1,5 +1,6 @@
 .navbar {
     background-color:rgb(112, 95, 90);
+
 }
 .nav-link {
     color:rgb(254, 253, 242)
@@ -8,7 +9,8 @@
     color:rgb(200, 223, 189);
 }
 body {
-    background-color:rgb(254, 253, 242)
+    background-color:rgb(254, 253, 242);
+    color: rgb(112, 95, 90);
 }
 
 .card {
@@ -17,3 +19,43 @@ body {
     background-color: rgb(112, 95, 90);
     color: rgb(254, 253, 242);
 }
+
+h1 {
+    color: rgb(128, 198, 208);
+    margin-top: 5px;
+    text-align: center;
+}
+
+h4 {
+    color: rgb(221, 190, 109);
+}
+
+button {
+    background-color: rgb(221, 190, 109);
+    color: rgb(254, 253, 242);
+    border:none
+}
+
+button:hover {
+    background-color: rgb(200, 223, 189);
+}
+
+.item-links {
+    color: rgb(112, 95, 90);
+}
+.item-links:hover {
+    color: rgb(221, 190, 109);
+}
+
+
+.create-btn {
+    background-color: rgb(221, 190, 109);
+    color: rgb(254, 253, 242);
+}
+
+.create-btn:hover{
+    background-color: rgb(200, 223, 189);
+    color: rgb(254, 253, 242);
+}
+
+

@@ -2,19 +2,27 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="container">
+<div class="container row">
+<div class="col-lg-6 my-5">
+    <img src={{item.link}}>
 
-<h1>{{ item.name }}</h1>
-<img src={{item.link}}>
-<h3>Item Category</h3>
-<p>{{ item.category }}<p>
-<h3>Item Color</h3>
-<p>{{ item.color }}<p>
+</div>
+<div class="col-lg-6 my-5">
+    <h1>{{ item.name }}</h1><br>
+    <h3>Item Category: {{ item.category }} </h3><br>
+    <h3>Item Color: {{ item.color }}</h3>
+    <div class="row">
+    <p><form method='POST' action= "/items/{{item._id}}/delete">
+        <button type='submit' class="mx-2">Delete</button>
+        </form></p>
+    <p><form method='POST' action= "/items/{{item._id}}/edit">
+            <button type='submit' class="mx-2">Edit</button>
+        </form></p>
+    </div>
+</div>
+</div>
+</div>
 
-<p><form method='POST' action= "/items/{{item._id}}/delete">
-    <button class='btn btn-primary' type='submit'>Delete</button>
-</form></p>
 
-<p><form method='POST' action= "/items/{{item._id}}/edit">
-    <button class='btn btn-primary' type='submit'>Edit</button>
-</form></p>
 {% endblock %}

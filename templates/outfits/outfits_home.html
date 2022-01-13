@@ -4,11 +4,11 @@
 {% block content %}
 <h1>Outfits</h1>
 
-<button class='btn'><a href='/outfits/new'>Create an Outfit</a></button>
+<button><a class="create-btn mx-2" href='/outfits/new'>Create an Outfit</a></button>
 
 {% for outfit in outfits %}
 
-    <h1><a href="/outfits/{{outfit._id}}">{{ outfit.name }}</a></h1>
+    <h2><a class="item-links" href="/outfits/{{outfit._id}}">{{ outfit.name }}</a></h2>
 
 {% endfor %}
 {% endblock %}

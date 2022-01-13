@@ -3,11 +3,12 @@
 
 {% block content %}
 
-    <h1 class="text-center">Items</h1>
-    <h4>Sort Items</h4>
+    <h1>Items</h1>
+    <h4 class="mx-2">Sort Items</h4>
+
     <div class="container row my-3">
-    <form method="POST" action="/items/filter">
-    <label for="color" class="mx-2">Select Item Color</label>
+    <form method="POST" action="/items/filter" class="my-auto">
+    <label for="color" class="mx-2 my-auto">Select Item Color</label>
         <select class="" id="color" name="color" type="select">
           <option>--</option>
           <option>Black</option>
@@ -46,7 +47,7 @@
         <div class="col-lg-4">
             <figure>
                 <img src= {{ item.link }}>
-                <figcaption> <h2><a href='/items/{{ item._id }}'>{{ item.name }}</a></h2></figcaption>
+                <figcaption> <h2><a class="item-links" href='/items/{{ item._id }}'>{{ item.name }}</a></h2></figcaption>
 
             </figure>
         </div>

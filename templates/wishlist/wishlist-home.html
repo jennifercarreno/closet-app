@@ -3,9 +3,9 @@
 
 {% block content %}
     <h1>Wishlist </h1>
-    <button class="btn"><a href='/wishlist/new'>Upoad an Item to Wishlist</a></button>
+    <button ><a href='/wishlist/new' class="create-btn mx-2">Upload an Item to Wishlist</a></button>
 
-    <h4>Sort Items</h4>
+    <h4 class="mx-2">Sort Items</h4>
     <div class="container row my-3">
     <form method="POST" action="/wishlist/filter">
     <label for="color" class="mx-2">Select Item Color</label>
@@ -42,8 +42,14 @@
         </form>
     </div>
 
+    <div class="contianer row mx-auto">
     {% for item in items %}
-        <h2><a href='/wishlist/{{ item._id }}'>{{item.name}}</a></h2>
-        <img src={{item.link}}>
+    <div class="col-lg-4">
+      <figure>
+          <img src= {{ item.link }}>
+          <figcaption><h2><a class="item-links" href='/wishlist/{{ item._id }}'>{{item.name}}</a></h2></figcaption>
+      </figure>
+  </div>
     {% endfor %}
+  </div>
 {% endblock %}

@@ -2,20 +2,31 @@
 
 {% block content %}
 <h1>{{outfit.name}}</h1>
+<div class="container row my-3">
 
-{% for item in outfit_items %}
-<img src={{item}}>
-{% endfor %}
+ <p><form method='POST' action= "/outfits/{{outfit._id}}/delete">
+        <button class="mx-2" type='submit'>Delete</button>
+    </form></p>
+    
+    <p><form method='POST' action= "/outfits/{{outfit._id}}/edit">
+        <button class="mx-2" type='submit'>Edit</button>
+    </form></p>
+</div>
+<div class="row mx-auto">
+    {% for item in outfit_items %}
+    <div class="col-lg-4">
+        <img src={{item}}>
+    </div>
+    {% endfor %}
+</div>
 
 
 
-<p><form method='POST' action= "/outfits/{{outfit._id}}/delete">
-    <button class='btn btn-primary' type='submit'>Delete</button>
-</form></p>
 
-<p><form method='POST' action= "/outfits/{{outfit._id}}/edit">
-    <button class='btn btn-primary' type='submit'>Edit</button>
-</form></p>
+
+
+
+
 
 
 

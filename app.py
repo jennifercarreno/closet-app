@@ -179,6 +179,7 @@ def outfits_new():
 def outfits_submit():
     outfit = {
         'name':request.form.get('name'),
+        'description':request.form.get('description'),
         'item1':request.form.get('outfit-item1'),
         'item2':request.form.get('outfit-item2'),
         'item3':request.form.get('outfit-item3'),
@@ -217,6 +218,7 @@ def outfit_edit(outfit_id):
 def outfit_update(outfit_id):
     updated_outfit = {
         'name':request.form.get('name'),
+        'description':request.form.get('description'),
         'item1':request.form.get('outfit-item1'),
         'item2':request.form.get('outfit-item2'),
         'item3':request.form.get('outfit-item3'),

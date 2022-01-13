@@ -4,6 +4,8 @@
 <h1>{{outfit.name}}</h1>
 <div class="container row my-3">
 
+<button class="mx-2"><a class="my-2 mx-2 create-btn" href="/outfits">⇦ BACK TO OUTFITS</a></button>
+
  <p><form method='POST' action= "/outfits/{{outfit._id}}/delete">
         <button class="mx-2" type='submit'>Delete</button>
     </form></p>
@@ -11,10 +13,15 @@
     <p><form method='POST' action= "/outfits/{{outfit._id}}/edit">
         <button class="mx-2" type='submit'>Edit</button>
     </form></p>
+
 </div>
 <div class="row mx-auto">
-    {% for item in outfit_items %}
     <div class="col-lg-4">
+        <h3>Tags: {{outfit.occasion}}</h3>
+        <h3>Description: {{outfit.description}}</h3>
+    </div>
+    {% for item in outfit_items %}
+    <div class="col-lg-4 my-2">
         <img src={{item}}>
     </div>
     {% endfor %}

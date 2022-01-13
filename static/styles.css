@@ -51,11 +51,14 @@ button:hover {
 .create-btn {
     background-color: rgb(221, 190, 109);
     color: rgb(254, 253, 242);
+    border-color: rgb(254, 253, 242);
 }
 
 .create-btn:hover{
     background-color: rgb(200, 223, 189);
     color: rgb(254, 253, 242);
+    border-color: rgb(254, 253, 242);
+    border-width: 5px;
 }
 
 

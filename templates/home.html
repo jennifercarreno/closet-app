@@ -2,32 +2,62 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="container pb-5" >
+  <div class="row">
+      <div class="card col-lg-4 text-center px-2 hero-cards">
+          
+      </div>
 
-<div class="container pb-5 pt-5 mb-5 mt-5" >
+      <div class="card col-lg-4 px-2 text-center hero-cards">
+          <img class="card-img-top" src="/static/3.png" alt="Card image cap">
+          
+      </div>
+
+      <div class="card col-lg-4 px-2 text-center hero-cards">
+          
+      </div>
+  </div>
+</div>
+
+<div class="container pb-5 mb-5" >
     <div class="row">
         <div class="card col-lg-4 text-center px-2">
-            <!-- <img class="card-img-top" src="https://cdn.shopify.com/s/files/1/0577/7149/1504/products/pleasing_06.jpg?v=1636654730" alt="Card image cap"> -->
+            <img class="card-img-top" src="https://i.pinimg.com/564x/0d/b0/d3/0db0d355b66a4c424c179060ad7b1841.jpg" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">Upload an Item</h5>
-              <a href="/item/new" class="btn">View</a>
+              <h5 class="card-title">View Your Closet</h5>
+              <p>Add an item to your closet. These can be used to create outfits. Use any photo online to save.</p>
+              <a href="/items" class="create-btn px-2">View</a>
             </div>
         </div>
 
         <div class="card col-lg-4 px-2 text-center">
-            <!-- <img class="card-img-top" src="https://cdn.shopify.com/s/files/1/0577/7149/1504/products/pleasing_50.jpg?v=1636658650" alt="Card image cap"> -->
+          <img class="card-img-top" src="https://i.pinimg.com/564x/cf/7e/33/cf7e33b7262337adb26e2bff60405886.jpg" alt="Card image cap" >
+          <div class="card-body">
+            <h5 class="card-title">Create an Outfit</h5>
+            <p>Create an outfit using the items in your closet. Give a name, description, and a tag for the occasion.</p>
+            <a href="/outfits" class="create-btn px-2">View</a>
+          </div>
+      </div>
+
+        <div class="card col-lg-4 px-2 text-center">
+            <img class="card-img-top" src="https://i.pinimg.com/564x/4a/62/0f/4a620f8f696e879f07b1c81204f739d5.jpg" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">View Your Wishlist</h5>
-              <a href="/wishlist" class="btn">View</a>
+              <p>Add items to your wishlist, keep track of anything you want in your dream closet! Use filters to sort by color or category.</p>
+              <a href="/wishlist" class="create-btn px-2">View</a>
             </div>
         </div>
 
-        <div class="card col-lg-4 px-2 text-center">
-            <!-- <img class="card-img-top" src="https://cdn.shopify.com/s/files/1/0577/7149/1504/products/pleasing_39.jpg?v=1636657669" alt="Card image cap" > -->
-            <div class="card-body">
-              <h5 class="card-title">Create an Outfit</h5>
-              <a href="/outfits" class="btn">View</a>
-            </div>
-        </div>
+        
     </div>
+</div>
+
+<div class="pb-5 pt-5 mb-5 mt-5 container ">
+  <h1>Fitspo</h1>
+  <h4 class="lead text-center">Personal Lookbook</h4>
+  <hr class="my-4">
+  <p>A lookbook is a collection of photographs used to show off a style, and give viewers ideas on how to style outfits, or to show what the latest fashions are.
+    Fitspo allows users to gather photos from anywhere online and create their own personal lookbook. Users can also create a wishlist and keep track of items in their own closet.
+  </p>
 </div>
 {% endblock %}

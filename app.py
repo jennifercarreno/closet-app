@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, url_for, request
 from bson.objectid import ObjectId
 from pymongo import MongoClient
 import os
-from item_functions import filter, link_converter
+from item_functions import filter, link_converter, outfit_filter
 
 host = os.environ.get('DB_URL')
 client = MongoClient(host=host)
@@ -187,7 +187,7 @@ def outfits_submit():
         'item5':request.form.get('outfit-item5'),
         'occasion':request.form.get('occasion')
     }
-
+    link_converter(outfit, db.items)
     outfits.insert_one(outfit)
     print(outfits)
     return render_template('outfits/outfits_home.html', outfits=outfits.find())
@@ -235,5 +235,9 @@ def outfit_update(outfit_id):
     link_converter(outfit, items)
     return render_template('outfits/outfits_show.html', outfit = outfit)
 
+@app.route('/outfits/filter', methods=['POST'])
+def outfits_filter():
+    filtered_outfits = outfit_filter(outfits)
+    return render_template('outfits/outfits_home.html', outfits=filtered_outfits)
 if __name__ == '__main__':
    app.run()

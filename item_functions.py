@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, url_for, request
 # import app 
 
 global filtered_items
+global filtered_outfits
 global outfit_items
 
 def filter(items):
@@ -40,6 +41,7 @@ def filter(items):
 
 def link_converter(outfit, items):
     outfit_items = []
+    
     for item in items.find():
         if item['name'] == outfit['item1']:
             outfit['item1'] = item['link']
@@ -65,4 +67,12 @@ def link_converter(outfit, items):
             outfit_items.append(outfit['item5'])
 
     return outfit_items
+
+def outfit_filter(outfits):
+    filtered_outfits = []
+    filter = request.form.get('occasion')
+    for outfit in outfits.find():
+        if outfit.get('occasion') == filter:
+            filtered_outfits.append(outfit)
+    return filtered_outfits
 

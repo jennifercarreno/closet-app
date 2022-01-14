@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, url_for, request
 from bson.objectid import ObjectId
 from pymongo import MongoClient
 import os
-from item_functions import filter, link_converter, outfit_filter
+from item_functions import filter, link_converter, outfit_filter, outfits_links
 
 host = os.environ.get('DB_URL')
 client = MongoClient("mongodb+srv://heroku:1234@cluster0.pgw7x.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
@@ -196,8 +196,7 @@ def outfits_submit():
 @app.route('/outfits/<outfit_id>')
 def outfit_show(outfit_id):
     outfit = outfits.find_one({'_id': ObjectId(outfit_id)})
-    items = db.items
-    outfit_items = link_converter(outfit, items)
+    outfit_items = outfits_links(outfits)
     return render_template('outfits/outfits_show.html', outfit = outfit, outfit_items=outfit_items)
 
 # deletes an outfit

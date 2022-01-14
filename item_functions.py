@@ -76,3 +76,16 @@ def outfit_filter(outfits):
             filtered_outfits.append(outfit)
     return filtered_outfits
 
+def outfits_links(outfit):
+    outfit_items=[]
+    if outfit['item1'] != '':
+        outfit_items.append(outfit['item1'])
+    if outfit['item2'] != '':
+        outfit_items.append(outfit['item2'])
+    if outfit['item3'] != '':
+        outfit_items.append(outfit['item3'])
+    if outfit['item4'] != '':
+        outfit_items.append(outfit['item4'])
+    if outfit['item5'] != '':
+        outfit_items.append(outfit['item5'])
+    return outfit_items

@@ -78,14 +78,17 @@ def outfit_filter(outfits):
 
 def outfits_links(outfit):
     outfit_items=[]
-    if outfit['item1'] != '':
+    if outfit['item1'] != '--':
+        print(f"this is item1: {outfit['item1']}")
         outfit_items.append(outfit['item1'])
-    if outfit['item2'] != '':
+    if outfit['item2'] != '--':
         outfit_items.append(outfit['item2'])
-    if outfit['item3'] != '':
+    if outfit['item3'] != '--':
         outfit_items.append(outfit['item3'])
-    if outfit['item4'] != '':
+    if outfit['item4'] != '--':
         outfit_items.append(outfit['item4'])
-    if outfit['item5'] != '':
+    if outfit['item5'] != '--':
         outfit_items.append(outfit['item5'])
+    
+    print(outfit_items)
     return outfit_items

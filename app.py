@@ -27,7 +27,7 @@ def item_new():
 @app.route('/items')
 def items():
     items = db.items
-    print(items)
+    # print(items)
     return render_template('items/items.html', items = items.find())
 
 # displays items when created
@@ -44,10 +44,10 @@ def items_submit():
     
     items.insert_one(item)
     # print(db.items)
-    print(item['name'])
-    print(item['link'])
-    print(item['category'])
-    print(item['color'])
+    # print(item['name'])
+    # print(item['link'])
+    # print(item['category'])
+    # print(item['color'])
     # item_photo_func = item_functions.get_item_photo(items)
     return render_template('items/items.html', items=items.find())
 
@@ -56,6 +56,7 @@ def items_submit():
 def item_show(item_id):
     items=db.items
     item = items.find_one({'_id': ObjectId(item_id)})
+    print(f"this is the item id: {item_id}")
     return render_template('items/items_show.html', item = item)
 
 # deletes an item
@@ -189,14 +190,15 @@ def outfits_submit():
     }
     link_converter(outfit, db.items)
     outfits.insert_one(outfit)
-    print(outfits)
     return render_template('outfits/outfits_home.html', outfits=outfits.find())
 
 # displays a single outfit
 @app.route('/outfits/<outfit_id>')
 def outfit_show(outfit_id):
+    print(f"this is the outfit id: {outfit_id}")
     outfit = outfits.find_one({'_id': ObjectId(outfit_id)})
-    outfit_items = outfits_links(outfits)
+    outfit_items = outfits_links(outfit)
+    print(outfit_items)
     return render_template('outfits/outfits_show.html', outfit = outfit, outfit_items=outfit_items)
 
 # deletes an outfit

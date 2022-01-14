@@ -5,7 +5,7 @@ import os
 from item_functions import filter, link_converter, outfit_filter
 
 host = os.environ.get('DB_URL')
-client = MongoClient(host=host)
+client = MongoClient("mongodb+srv://heroku:1234@cluster0.pgw7x.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 db = client.closet
 items = db.items
 wishlistItems = db.wishlistItems
